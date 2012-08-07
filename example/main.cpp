@@ -68,7 +68,7 @@ int main(int argc, char** argv)
     std::string key = "";
     while (key != "exit" && key != "quit")
     {
-        std::cout << "\n\n -- Wich key do you want to see ?";
+        std::cout << "\n -- Wich key do you want to see ?";
         std::cin >> key;
         
         if(dic.getEntryPtr(key) != NULL)

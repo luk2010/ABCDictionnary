@@ -12,7 +12,15 @@
 #include <vector>
 #include <string>
 
+#if __cplusplus >= 201103L
+#define cplusplus0x 1
+#endif
+
 #include "Dictionnariable.h"
+
+#if defined (cplusplus0x)
+#include <initializer_list>
+#endif
 
 #define VERSION_MAJOR 1
 #define VERSION_MINOR 0
@@ -39,6 +47,10 @@ namespace Abc
         
         Dictionnary();
         Dictionnary(const Dictionnary& other);
+        
+#if defined (cplusplus0x)
+        Dictionnary(std::initializer_list<Dictionnariable*> list);
+#endif
         
         ~Dictionnary();
         
@@ -69,6 +81,9 @@ namespace Abc
         
         virtual std::string toText() const;
         virtual std::string getType() const;
+        
+        Dictionnariable& operator [] (const std::string & index);
+        const Dictionnariable& operator [] (const std::string & index) const;
         
     public:
         static Version version;

@@ -41,6 +41,14 @@ namespace Abc
         }
     }
     
+#if defined (cplusplus0x)
+    Dictionnary::Dictionnary(std::initializer_list<Dictionnariable*> list)
+    {
+        for(auto it = list.begin(); it != list.end(); it++)
+            addEntry(*it);
+    }
+#endif
+    
     Dictionnary::~Dictionnary()
     {
         while(!entries.empty())
@@ -199,6 +207,16 @@ namespace Abc
     std::string Dictionnary::getType() const
     {
         return "Dictionnary";
+    }
+    
+    Dictionnariable& Dictionnary::operator[](const std::string &index)
+    {
+        return getEntry(index);
+    }
+    
+    const Dictionnariable& Dictionnary::operator[](const std::string &index) const
+    {
+        return getEntry(index);
     }
     
 }
