@@ -73,7 +73,7 @@ int main(int argc, char** argv)
         
         if(dic.getEntryPtr(key) != NULL)
         {
-            std::cout << dic.getEntry(key).toText();
+            std::cout << dic[key].toText();
         }
         else if(key != "exit" && key != "quit")
         {
