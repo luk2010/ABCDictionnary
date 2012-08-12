@@ -7,6 +7,7 @@
 //
 
 #include <ABCDictionnary.h>
+#include <AutoReleaseDictionnariable.h>
 #include <iostream>
 
 using namespace Abc;
@@ -59,6 +60,12 @@ int main(int argc, char** argv)
     
     dic2 << &str3;
     
+    AutoReleaseDictionnariable<int> adic(4);
+    AutoReleaseDictionnariable<int> adic2(adic);
+    
+    dic2 << &adic;
+    dic2 << &adic2;
+    
     std::cout << "---- Example Dictionnary Programm ----" << std::endl;
     std::cout << "Using the ABCDictionnary API v." << Abc::Dictionnary::version.MajorVersion << "." << Dictionnary::version.MinorVersion << " (build " << Dictionnary::version.CompleteVersion << ")." << std::endl;
     std::cout << "Showing current dictionnary..." << std::endl;
@@ -80,6 +87,8 @@ int main(int argc, char** argv)
             std::cout << "This key doesn't exist !!";
         }
     }
+    
+    AutoReleaseDictionnariable<int>::clean();
     
     return 0;
 }

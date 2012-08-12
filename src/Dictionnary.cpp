@@ -7,6 +7,7 @@
 //
 
 #include "ABCDictionnary.h"
+#include "AutoReleaseDictionnariable.h"
 
 namespace Abc 
 {
@@ -53,7 +54,7 @@ namespace Abc
     {
         while(!entries.empty())
         {
-            entries.erase(entries.begin());
+            removeEntry(0);
         }
     }
     
@@ -138,14 +139,20 @@ namespace Abc
     
     void Dictionnary::removeEntry(int index)
     {
-        entries.erase(entries.begin() + index);
+        if(index >= 0 && index < size())
+        {
+            Dictionnariable* dic = getEntryPtr(index);
+            entries.erase(entries.begin() + index);
+            if(dic->getType() == "AutoReleaseDictionnariable")
+            {
+                delete dic;
+            }
+        }
     }
     
     void Dictionnary::removeEntry(const std::string &key)
     {
-        int index = getIndex(key);
-        if(index >= 0)
-            entries.erase(entries.begin() + index);
+        removeEntry(getIndex(key));
     }
     
     int Dictionnary::getIndex(const std::string &key) const

@@ -12,8 +12,17 @@
 #include <string>
 #include <sstream>
 
+#define DLL_IMPORT 
+
+#if defined (BUILD_DLL)
+#define DLL_CONFIG (dllimport)
+#else
+#define DLL_CONFIG DLL_EXPORT
+#endif
+
 namespace Abc 
 {
+    
     //! \class Dictionnariable
     /**
      *  Base class for every object wich can be stored in a dictionnary. Every object must inherit this class if they want to be storable 
