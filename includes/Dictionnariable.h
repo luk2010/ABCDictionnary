@@ -14,10 +14,14 @@
 
 #define DLL_IMPORT 
 
+#if defined (WIN32)
 #if defined (BUILD_DLL)
-#define DLL_CONFIG (dllimport)
+#define DLL_CONFIG __declspec(dllexport)
 #else
-#define DLL_CONFIG DLL_EXPORT
+#define DLL_CONFIG __declspec(dllimport)
+#endif
+#else
+#define DLL_CONFIG 
 #endif
 
 namespace Abc 

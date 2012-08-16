@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 ACorp. All rights reserved.
 //
 
+#include <stdio.h>
 #include "ABCDictionnary.h"
 #include "AutoReleaseDictionnariable.h"
 

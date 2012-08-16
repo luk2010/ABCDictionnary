@@ -25,7 +25,7 @@ namespace Abc
         
     public:
         
-        static DicablesMap dicables;
+        static DLL_CONFIG DicablesMap dicables;
         
     protected:
         
@@ -129,6 +129,8 @@ namespace Abc
             return "AutoReleaseDictionnariable";
         }
     };
+
+    template <typename T> typename AutoReleaseDictionnariable<T>::DicablesMap AutoReleaseDictionnariable<T>::dicables;
 }
 
 #endif

@@ -42,4 +42,7 @@ target_link_libraries(
   abcdictionnary
   )
 
-
+set_target_properties(
+  abcdictionnary
+  PROPERTIES COMPILE_DEFINITIONS "BUILD_DLL"
+  )
